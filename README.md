@@ -5,7 +5,7 @@
 
 ***Tên: Nguyễn Thắng Hưng***
 
-***Đề Tài: Thiết kế trang web bán điện thoại di động***
+***Đề Tài: Thiết kế trang web tra cứu, mượn sách thư viện trường***
 
 ***Link WebSite:*** http://thuvien.somee.com/
 

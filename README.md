@@ -13,7 +13,7 @@
  
  # Kỹ năng thực hiện:
  
- ## Code giao diện##
+ ## Code giao diện
  
  ***Sử dụng các thư viện Bootstrap 3, Jquery kết hợp với Html, Javascript, Css***
  

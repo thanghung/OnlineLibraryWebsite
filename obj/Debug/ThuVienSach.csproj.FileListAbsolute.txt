@@ -1,0 +1,17 @@
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\ThuVienSach.dll.config
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\ThuVienSach.dll
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\ThuVienSach.pdb
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\EntityFramework.dll
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\EntityFramework.SqlServer.dll
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\EntityFramework.xml
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\EntityFramework.SqlServer.xml
+D:\ProjectWeb\ThuVienSach\ThuVienSach\obj\Debug\ThuVienSach.csprojAssemblyReference.cache
+D:\ProjectWeb\ThuVienSach\ThuVienSach\obj\Debug\ThuVienSach.csproj.CoreCompileInputs.cache
+D:\ProjectWeb\ThuVienSach\ThuVienSach\obj\Debug\ThuVienSach.csproj.CopyComplete
+D:\ProjectWeb\ThuVienSach\ThuVienSach\obj\Debug\ThuVienSach.dll
+D:\ProjectWeb\ThuVienSach\ThuVienSach\obj\Debug\ThuVienSach.pdb
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\DocumentFormat.OpenXml.dll
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\EPPlus.dll
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\DocumentFormat.OpenXml.xml
+D:\ProjectWeb\ThuVienSach\ThuVienSach\bin\EPPlus.xml
+D:\ProjectWeb\ThuVienSach\ThuVienSach\obj\Debug\ThuVienSach.csproj.ResolveComReference.cache

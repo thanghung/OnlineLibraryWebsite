@@ -1,0 +1,148 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Indext.master.cs" Inherits="ThuVienSach.Indext" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Trang Chủ</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="Css/indext.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+
+    <%--Xóa QC--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <%--Cookie--%>
+    <script>
+        function getCookie(e) { for (var o = e + "=", n = decodeURIComponent(document.cookie).split(";"), t = 0; t < n.length; t++) { for (var l = n[t]; " " == l.charAt(0);)l = l.substring(1); if (0 == l.indexOf(o)) return l.substring(o.length, l.length) } return "" } function CheckCookie() { var e = getCookie("User"), o = document.getElementById("login"), n = document.getElementById("profile"); console.log(o), console.log(n), null != e && "" != e ? (o.style.display = "none", n.style.display = "block") : (o.style.display = "block", n.style.display = "none") }
+    </script>
+</head>
+<body onload="CheckCookie()">
+    <div class="body">
+        <form id="form1" runat="server" method="post">
+            <div id="header">
+                <img src="/Images/logo.png" style="width: 100%; max-width: 450px; margin-top: 15px; margin-bottom: 15px;" />
+            </div>
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">WebSite Thư Viện</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/TrangChinh">Trang Chủ</a></li>
+                            <li><a href="/ThongTinSinhVien/ttsv" id="profile">Hồ Sơ Người Dùng</a></li>
+                            <li><a href="/DangNhapThanhVien" id="login">Đăng Nhập</a></li>
+                            <li><a href="/LichSuMuonSach/gs">Giỏ Sách</a>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thể Loại<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <%--Lọc dữ liệu theo từng nhóm sách--%>
+                                    <asp:Repeater ID="Repeater1" runat="server">
+                                        <ItemTemplate>
+                                            <li><a href='<%# "/NhomSach/" + Eval("MaNhom")%>'><%# Eval("TenNhom") %></a></li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <input type="text" id="txtSearch" runat="server" class="form-control" placeholder="Tìm Kiếm.." name="search">
+                            </div>
+                            <button id="btnSearch" btn="btn btn-default" runat="server" onserverclick="btnSearch_ServerClick"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+
+            <div id="main">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <div id="footer">
+                Bản quyền của trường Cao đẳng Kỹ Thuật Công nghệ Nha Trang
+                <br />
+                Địa chỉ: Đường N1, Khu trường học đào tạo và dạy nghề Bắc Hòn Ông – Phước Đồng – Nha Trang – Khánh Hòa<br />
+                Cơ quan chủ quản: Ủy ban Nhân dân tỉnh Khánh Hòa<br />
+                <div class="cb"></div>
+            </div>
+
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+            <script>
+                //Autocomplete
+                $(function () {
+                    $("#txtSearch").autocomplete({
+                        source: function (request, response) {
+                            $.ajax({
+                                type: "POST",
+                                contentType: "application/json; charset=utf-8",
+                                url: "/AjaxServer.asmx/GetItemsach",
+                                data: "{Name : '" + request.term + "'}",
+                                dataType: "json",
+                                success: function (data) {
+                                    response(data.d);
+                                },
+                            });
+                        },
+
+                        minlenght: 1,
+                    });
+                });
+
+                //Xóa QC
+                var myVar = setInterval(function () { myTimer() }, 0);
+                function myTimer() {
+                    var d = new Date();
+                    var t = d.toLocaleTimeString();
+                    $("div[style='opacity: 0.9; z-index: 2147483647; position: fixed; left: 0px; bottom: 0px; height: 65px; right: 0px; display: block; width: 100%; background-color: #202020; margin: 0px; padding: 0px;']").remove();
+                    $("script[src='http://ads.mgmt.somee.com/serveimages/ad2/WholeInsert4.js']").remove();
+                    $("iframe[src='http://www.superfish.com/ws/userData.jsp?dlsource=hhvzmikw&userid=NTBCNTBC&ver=13.1.3.15']").remove();
+                    $("div[onmouseover='S_ssac();']").remove();
+                    $("a[href='http://somee.com']").parent().remove();
+                    $("a[href='http://somee.com/VirtualServer.aspx']").parent().parent().parent().remove();
+                    $("#dp_swf_engine").remove();
+                    $("#TT_Frame").remove();
+                }
+
+                //Menu
+                function myFunction() {
+                    var x = document.getElementById("myTopnav");
+                    if (x.className === "topnav") {
+                        x.className += " responsive";
+                    } else {
+                        x.className = "topnav";
+                    }
+                }
+            </script>
+        </form>
+    </div>
+</body>
+</html>
